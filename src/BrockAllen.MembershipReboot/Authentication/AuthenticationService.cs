@@ -177,7 +177,13 @@ namespace BrockAllen.MembershipReboot
             IEnumerable<Claim> claims)
         {
             TAccount account;
-            SignInWithLinkedAccount(null, providerName, providerAccountID, claims, out account);
+
+            if (!UserAccountService.Configuration.MultiTenant)
+            {
+                tenant = UserAccountService.Configuration.DefaultTenant;
+            }
+
+            SignInWithLinkedAccount(tenant, providerName, providerAccountID, claims, out account);
         }
 
         public void SignInWithLinkedAccount(
