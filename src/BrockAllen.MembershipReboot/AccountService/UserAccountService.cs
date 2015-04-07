@@ -799,7 +799,7 @@ namespace BrockAllen.MembershipReboot
         public virtual bool AuthenticateWithEmail(string tenant, string email, string password)
         {
             TAccount account;
-            return AuthenticateWithEmail(null, email, password, out account);
+            return AuthenticateWithEmail(tenant, email, password, out account);
         }
         public virtual bool AuthenticateWithEmail(string tenant, string email, string password, out TAccount account)
         {
